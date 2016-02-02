@@ -14,12 +14,18 @@ public class FormatHelper {
 	
 	private static DecimalFormat twoDP = new DecimalFormat("#.##");
 	
-	public static String shortenNumber(int number) {
-		if (number >= 1000000000) {
-            return String.valueOf(twoDP.format(number / 1000000000.0)) + "B";
-		} else if (number >= 1000000) {
+	public static String shortenNumber(long number) {
+		if (number >= 1000000000000000000L) {
+			return String.valueOf(twoDP.format(number / 1000000000000000000.0)) + "E";
+		} else if (number >= 1000000000000000L) {
+			return String.valueOf(twoDP.format(number / 1000000000000000.0)) + "P";
+		} else if (number >= 1000000000000L) {
+			return String.valueOf(twoDP.format(number / 1000000000000.0)) + "T";
+		} else if (number >= 1000000000L) {
+            return String.valueOf(twoDP.format(number / 1000000000.0)) + "G";
+		} else if (number >= 1000000L) {
             return String.valueOf(twoDP.format(number / 1000000.0)) + "M";
-        } else if (number >= 1000) {
+        } else if (number >= 1000L) {
             return String.valueOf(twoDP.format(number / 1000)) + "K";
         } else {
             return String.valueOf(number);
@@ -27,7 +33,7 @@ public class FormatHelper {
 		
 	}
 	
-	public static void addShiftText(EntityPlayer player, List list, List<String> text) {
+	public static void addShiftTooltip(List list, List<String> text) {
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
 			for (String v : text) {
 				list.add(v);
