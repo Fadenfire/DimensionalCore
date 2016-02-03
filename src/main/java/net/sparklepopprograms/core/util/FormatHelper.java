@@ -1,13 +1,12 @@
 package net.sparklepopprograms.core.util;
 
-
+import java.math.BigInteger;
 import java.sql.Array;
 import java.text.DecimalFormat;
 import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
 
 public class FormatHelper {
@@ -15,17 +14,17 @@ public class FormatHelper {
 	private static DecimalFormat twoDP = new DecimalFormat("#.##");
 	
 	public static String shortenNumber(long number) {
-		if (number >= 1000000000000000000L) {
-			return String.valueOf(twoDP.format(number / 1000000000000000000.0)) + "E";
-		} else if (number >= 1000000000000000L) {
-			return String.valueOf(twoDP.format(number / 1000000000000000.0)) + "P";
-		} else if (number >= 1000000000000L) {
-			return String.valueOf(twoDP.format(number / 1000000000000.0)) + "T";
-		} else if (number >= 1000000000L) {
-            return String.valueOf(twoDP.format(number / 1000000000.0)) + "G";
-		} else if (number >= 1000000L) {
-            return String.valueOf(twoDP.format(number / 1000000.0)) + "M";
-        } else if (number >= 1000L) {
+		if (number >= Math.pow(1000,6)) {
+			return String.valueOf(twoDP.format(number / Math.pow(1000,6))) + "E";
+		} else if (number >= Math.pow(1000,5)) {
+			return String.valueOf(twoDP.format(number / Math.pow(1000,5))) + "P";
+		} else if (number >= Math.pow(1000,4)) {
+			return String.valueOf(twoDP.format(number / Math.pow(1000,4))) + "T";
+		} else if (number >= Math.pow(1000,3)) {
+            return String.valueOf(twoDP.format(number / Math.pow(1000,3))) + "G";
+		} else if (number >= Math.pow(1000,2)) {
+            return String.valueOf(twoDP.format(number / Math.pow(1000,2))) + "M";
+        } else if (number >= 1000) {
             return String.valueOf(twoDP.format(number / 1000)) + "K";
         } else {
             return String.valueOf(number);
