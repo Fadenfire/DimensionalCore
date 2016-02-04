@@ -21,13 +21,13 @@ public class FormatHelper {
 		} else if (number >= Math.pow(1000,4)) {
 			return String.valueOf(twoDP.format(number / Math.pow(1000,4))) + "T";
 		} else if (number >= Math.pow(1000,3)) {
-            return String.valueOf(twoDP.format(number / Math.pow(1000,3))) + "G";
+			return String.valueOf(twoDP.format(number / Math.pow(1000,3))) + "G";
 		} else if (number >= Math.pow(1000,2)) {
-            return String.valueOf(twoDP.format(number / Math.pow(1000,2))) + "M";
-        } else if (number >= 1000) {
-            return String.valueOf(twoDP.format(number / 1000)) + "K";
+			return String.valueOf(twoDP.format(number / Math.pow(1000,2))) + "M";
+		} else if (number >= 1000) {
+        	return String.valueOf(twoDP.format(number / 1000)) + "K";
         } else {
-            return String.valueOf(number);
+        	return String.valueOf(number);
         }
 		
 	}
