@@ -20,10 +20,19 @@ apply plugin: 'forge'
 version = "1.7.10-1.0.1"
 group= "net.sparklepopprograms.core"
 archivesBaseName = "DimensionalCore"
+libsDirName = "../releases"
  
 minecraft {
     version = "1.7.10-10.13.4.1558-1.7.10"
 }
+
+task dev(type: Jar) {
+    from sourceSets.main.output
+    from sourceSets.main.allJava
+    classifier = 'dev'
+}
+
+
 processResources
 {
     // replace stuff in mcmod.info, nothing else
