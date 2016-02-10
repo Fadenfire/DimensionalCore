@@ -31,20 +31,16 @@ public class WorldHelper {
             	}
             } else if (dropBlock && silkTouch) {
             	Item item = block.getItem(world, x, y, z);
-
-            	if (!(block == Blocks.dragon_egg)) {
             	
             		if (!(item == null)) {
             			Block block2 = item instanceof ItemBlock && !block.isFlowerPot() ? Block.getBlockFromItem(item) : block;
                 		WorldHelper.spawnItem(world, new ItemStack(item, 1, l), x, y, z);
             		}
-            	} else if (block == Blocks.dragon_egg) {
-            		WorldHelper.spawnItem(world, new ItemStack(Blocks.dragon_egg, 1), x, y, z);
-            	}
             }
 
             world.setBlock(x, y, z, Blocks.air, 0, 3);
-        }}
+        }
+        }
     }
 	
 	public static void spawnItem(World world, ItemStack item, int  x, int y, int z) {
