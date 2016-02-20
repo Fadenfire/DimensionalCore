@@ -26,7 +26,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 public class DimensionalCore {
 	
 	public static final String modid = "DimensionalCore";
-	public static final String version = "1.0.3";
+	public static final String version = "1.0.4";
 
 	@EventHandler
 	public void load(FMLPreInitializationEvent event) {
@@ -36,9 +36,7 @@ public class DimensionalCore {
 	
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
-		
-		
-		
+		FMLInterModComms.sendMessage("Waila", "register", "net.sparklepopprograms.core.compatibility.WailaHandler.callbackRegister");
 	}
 	
 	@EventHandler
