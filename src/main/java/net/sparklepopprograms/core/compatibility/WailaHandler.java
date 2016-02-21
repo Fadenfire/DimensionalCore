@@ -46,7 +46,6 @@ public class WailaHandler implements IWailaDataProvider {
 	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		
 		if (config.getConfig("AuraEnergySystem.ShowAuraStorage")) {
-			  
 			long storedAura = ((BaseEnergyStorageBlock)accessor.getTileEntity()).getStoredAura();
 			long maxStoredAura = ((BaseEnergyStorageBlock)accessor.getTileEntity()).getMaxStoredAura();
 			

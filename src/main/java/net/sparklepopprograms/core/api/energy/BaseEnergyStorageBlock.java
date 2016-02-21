@@ -13,7 +13,7 @@ public class BaseEnergyStorageBlock extends TileEntity {
 
 	public void readFromNBT(NBTTagCompound nbt) {
 
-		this.energy = nbt.getLong("Aura");
+		this.energy = nbt.getLong("AuraStorage");
 
 		if (energy > capacity) {
 			energy = capacity;
@@ -25,7 +25,7 @@ public class BaseEnergyStorageBlock extends TileEntity {
 		if (energy < 0) {
 			energy = 0;
 		}
-		nbt.setLong("Aura", energy);
+		nbt.setLong("AuraStorage", energy);
 	}
 
 	public void setCapacity(long capacity) {
@@ -37,7 +37,7 @@ public class BaseEnergyStorageBlock extends TileEntity {
 		}
 	}
 
-	public long receiveEnergy(long maxReceive, boolean simulate) {
+	public long receiveAura(long maxReceive, boolean simulate) {
 
 		long energyReceived = Math.min(capacity - energy, maxReceive);
 
@@ -47,7 +47,7 @@ public class BaseEnergyStorageBlock extends TileEntity {
 		return energyReceived;
 	}
 
-	public long extractEnergy(long maxExtract, boolean simulate) {
+	public long extractAura(long maxExtract, boolean simulate) {
 
 		long energyExtracted = Math.min(energy, maxExtract);
 
