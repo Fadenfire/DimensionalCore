@@ -26,7 +26,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 public class DimensionalCore {
 	
 	public static final String modid = "DimensionalCore";
-	public static final String version = "1.0.4";
+	public static final String version = "1.0.5";
 
 	@EventHandler
 	public void load(FMLPreInitializationEvent event) {
