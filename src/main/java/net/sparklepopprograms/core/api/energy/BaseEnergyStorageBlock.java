@@ -6,27 +6,20 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class BaseEnergyStorageBlock extends TileEntity {
+public class BaseEnergyStorageBlock extends TileEntity implements IAuraUser {
 
-	protected long energy;
-	protected long capacity;
+	long energy;
+	long capacity;
 
-	public void readFromNBT(NBTTagCompound nbt) {
-
-		this.energy = nbt.getLong("AuraStorage");
-
-		if (energy > capacity) {
-			energy = capacity;
-		}
-	}
-
-	public void writeToNBT(NBTTagCompound nbt) {
-
-		if (energy < 0) {
-			energy = 0;
-		}
-		nbt.setLong("AuraStorage", energy);
-	}
+	public void readFromNBT(NBTTagCompound var1) {
+	    super.readFromNBT(var1);
+	    energy = var1.getLong("AuraStorage");
+	  }
+	
+	public void writeToNBT(NBTTagCompound var1) {
+	    super.writeToNBT(var1);
+	    var1.setLong("AuraStorage", energy);
+	  }
 
 	public void setCapacity(long capacity) {
 
@@ -44,6 +37,7 @@ public class BaseEnergyStorageBlock extends TileEntity {
 		if (!simulate) {
 			energy += energyReceived;
 		}
+		
 		return energyReceived;
 	}
 
@@ -54,7 +48,19 @@ public class BaseEnergyStorageBlock extends TileEntity {
 		if (!simulate) {
 			energy -= energyExtracted;
 		}
+		
 		return energyExtracted;
+	}
+	
+	public void modifyEnergyStored(int energy) {
+
+		this.energy += energy;
+
+		if (this.energy > capacity) {
+			this.energy = capacity;
+		} else if (this.energy < 0) {
+			this.energy = 0;
+		}
 	}
 
 	public long getStoredAura() {

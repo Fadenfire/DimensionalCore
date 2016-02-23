@@ -18,6 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.sparklepopprograms.core.api.energy.BaseEnergyStorageBlock;
 import cpw.mods.fml.common.Mod.EventHandler;
 
 
@@ -26,7 +27,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 public class DimensionalCore {
 	
 	public static final String modid = "DimensionalCore";
-	public static final String version = "1.0.5";
+	public static final String version = "1.0.6";
 
 	@EventHandler
 	public void load(FMLPreInitializationEvent event) {

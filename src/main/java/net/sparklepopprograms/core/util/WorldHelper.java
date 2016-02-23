@@ -52,5 +52,14 @@ public class WorldHelper {
         entityitem.delayBeforeCanPickup = 10;
         world.spawnEntityInWorld(entityitem);
 	}
+	
+	public static PositionInWorld[] getListOfPositionsAroundBlock(int xCoord, int yCoord, int zCoord) {
+		return new PositionInWorld[] {new PositionInWorld(xCoord + 1, yCoord, zCoord),
+			new PositionInWorld( xCoord - 1,  yCoord,  zCoord),
+			new PositionInWorld( xCoord,  yCoord + 1,  zCoord),
+			new PositionInWorld( xCoord,  yCoord - 1,  zCoord),
+			new PositionInWorld( xCoord,  yCoord,  zCoord + 1),
+			new PositionInWorld( xCoord,  yCoord,  zCoord - 1)};
+	}
 
 }

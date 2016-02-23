@@ -4,7 +4,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class BaseEnergyStorageItem extends Item {
+public class BaseEnergyStorageItem extends Item implements IAuraUser {
 	
 	protected long capacity;
 

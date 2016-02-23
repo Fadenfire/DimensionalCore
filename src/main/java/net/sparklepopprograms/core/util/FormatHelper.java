@@ -25,7 +25,7 @@ public class FormatHelper {
 		} else if (number >= Math.pow(1000,2)) {
 			return String.valueOf(twoDP.format(number / Math.pow(1000,2))) + "M";
 		} else if (number >= 1000) {
-        	return String.valueOf(twoDP.format(number / 1000)) + "K";
+        	return String.valueOf(twoDP.format(number / 1000.0)) + "K";
         } else {
         	return String.valueOf(number);
         }
