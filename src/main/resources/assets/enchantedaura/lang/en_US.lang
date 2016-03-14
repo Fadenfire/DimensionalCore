@@ -1,3 +1,10 @@
 //Waila
 
 option.AuraEnergySystem.ShowAuraStorage=Show Aura Storage
+
+// Updater
+
+updater.text_1=A new version of
+updater.text_2=is available:
+updater.download=Download
+updater.tooltip=Click here to download the latest version of

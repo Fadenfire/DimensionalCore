@@ -18,16 +18,20 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.sparklepopprograms.core.api.energy.BaseEnergyStorageBlock;
+import net.sparklepopprograms.core.compatibility.ModCompatibility;
+import net.sparklepopprograms.core.energy.AuraStorageTile;
+import net.sparklepopprograms.core.helpers.LogHelper;
+import net.sparklepopprograms.core.updatechecker.UpdateManager;
+import net.sparklepopprograms.core.updatechecker.VersionRetriever;
 import cpw.mods.fml.common.Mod.EventHandler;
 
-
 @Mod(modid = DimensionalCore.modid, name = "DimensionalCore", version = DimensionalCore.version)
-
 public class DimensionalCore {
 	
 	public static final String modid = "DimensionalCore";
-	public static final String version = "1.0.6";
+	public static final String version = "1.0.7";
+	
+	public static final String updateURL = "http://minecraft.curseforge.com/projects/";
 
 	@EventHandler
 	public void load(FMLPreInitializationEvent event) {
@@ -37,13 +41,18 @@ public class DimensionalCore {
 	
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
-		FMLInterModComms.sendMessage("Waila", "register", "net.sparklepopprograms.core.compatibility.WailaHandler.callbackRegister");
+		ModCompatibility.register(event);
+		
+		UpdateManager.register("DimensionalCore", DimensionalCore.updateURL + "dimensionalcore/files", 0, this.version);
 	}
 	
 	@EventHandler
 	public void load(FMLPostInitializationEvent event) {
 		
-		
+	}
+	
+	@EventHandler
+	public void imcCallback(FMLInterModComms.IMCEvent event) {
 		
 	}
 }

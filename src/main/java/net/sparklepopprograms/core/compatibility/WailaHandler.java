@@ -13,9 +13,8 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.sparklepopprograms.core.api.energy.BaseEnergyStorageBlock;
-import net.sparklepopprograms.core.api.energy.IAuraUser;
-import net.sparklepopprograms.core.util.FormatHelper;
+import net.sparklepopprograms.core.energy.AuraStorageTile;
+import net.sparklepopprograms.core.helpers.FormatHelper;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -28,7 +27,7 @@ public class WailaHandler implements IWailaDataProvider {
 	@Optional.Method(modid = "Waila")
     public static void callbackRegister(IWailaRegistrar register) {
 
-        register.registerBodyProvider(new WailaHandler(), IAuraUser.class);
+        register.registerBodyProvider(new WailaHandler(), AuraStorageTile.class);
 
         register.addConfig("Aura", "AuraEnergySystem.ShowAuraStorage");
     }
@@ -46,11 +45,8 @@ public class WailaHandler implements IWailaDataProvider {
 	@Override
 	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		
-		if (config.getConfig("AuraEnergySystem.ShowAuraStorage")) {
-			long storedAura = accessor.getNBTData().getLong("AuraStorage");
-			long maxStoredAura = ((BaseEnergyStorageBlock)accessor.getTileEntity()).getMaxStoredAura();
-			
-			currenttip.add("Aura: " + FormatHelper.shortenNumber(storedAura) + " / " + FormatHelper.shortenNumber(maxStoredAura));
+		if (config.getConfig("AuraEnergySystem.ShowAuraStorage") && ((AuraStorageTile)accessor.getTileEntity()).shouldShowOnWaila()) {
+			currenttip.add(((AuraStorageTile)accessor.getTileEntity()).getWailaText());
 			
         }
 		
