@@ -6,3 +6,4 @@ bin
 .gradle
 .classpath
 releases
+/bin/
